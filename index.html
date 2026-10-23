@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Sistema de Biblioteca</title>
+		<link rel="stylesheet" href="style.css" />
+		<!-- Biblioteca do Supabase (cria o objeto global "supabase") -->
+		<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+	</head>
+	<body>
+		<header>
+			<h1>Sistema de Biblioteca</h1>
+			<nav>
+				<button class="aba ativa" data-aba="livros">Livros</button>
+				<button class="aba" data-aba="usuarios">Usuários</button>
+				<button class="aba" data-aba="emprestimos">Empréstimos</button>
+			</nav>
+		</header>
+
+		<div id="mensagem" class="mensagem oculto"></div>
+
+		<main>
+			<!-- ================= LIVROS ================= -->
+			<section id="livros" class="secao">
+				<h2>Cadastrar livro</h2>
+				<form id="form-livro">
+					<input type="text" id="livro-titulo" placeholder="Título" required />
+					<input type="text" id="livro-autor" placeholder="Autor" required />
+					<input type="number" id="livro-ano" placeholder="Ano" />
+					<button type="submit">Cadastrar</button>
+				</form>
+
+				<h2>Livros cadastrados</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Título</th>
+							<th>Autor</th>
+							<th>Ano</th>
+							<th>Situação</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody id="lista-livros"></tbody>
+				</table>
+			</section>
+
+			<!-- ================= USUÁRIOS ================= -->
+			<section id="usuarios" class="secao oculto">
+				<h2>Cadastrar usuário</h2>
+				<form id="form-usuario">
+					<input type="text" id="usuario-nome" placeholder="Nome" required />
+					<input type="email" id="usuario-email" placeholder="E-mail" />
+					<button type="submit">Cadastrar</button>
+				</form>
+
+				<h2>Usuários cadastrados</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Nome</th>
+							<th>E-mail</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody id="lista-usuarios"></tbody>
+				</table>
+			</section>
+
+			<!-- ================= EMPRÉSTIMOS ================= -->
+			<section id="emprestimos" class="secao oculto">
+				<h2>Registrar empréstimo</h2>
+				<form id="form-emprestimo">
+					<select id="emprestimo-livro" required></select>
+					<select id="emprestimo-usuario" required></select>
+					<button type="submit">Emprestar</button>
+				</form>
+
+				<h2>Histórico de empréstimos</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Livro</th>
+							<th>Usuário</th>
+							<th>Empréstimo</th>
+							<th>Devolução</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody id="lista-emprestimos"></tbody>
+				</table>
+			</section>
+		</main>
+
+		<script src="app.js"></script>
+	</body>
+</html>
